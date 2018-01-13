@@ -32,9 +32,21 @@ export default class BlogContentView extends React.Component {
     }
 
     createImageContainer(line) {
-        let lineObject = JSON.parse(line.substring(3));
+        let lineObject='';
+        try {
+             lineObject = JSON.parse(line.substring(3));
+        }
+        catch(err)
+        {
+            console.log(err);
+            return "";
+        }
         let retrievalkey = lineObject["key"];
+        if(retrievalkey === undefined && !isNumber(retrievalkey))
+            return "";
         let imageUrl = this.state.images[retrievalkey];
+        if(imageUrl === undefined)
+            return "";
         return this.renderImage(retrievalkey, imageUrl);
     }
 
@@ -46,8 +58,11 @@ export default class BlogContentView extends React.Component {
         let lines = this.state.textToRender;
         if ((typeof lines) === 'string') {
             let lineArr = lines.split("\n");
-            const finalContent=lineArr.map((line,lineNo)=>{
-                const content=(line.startsWith("img{"))?(<div key={lineNo+100}>{this.createImageContainer(line)}</div>):(<div key={lineNo+100}>{line}</div>);
+            const finalContent = lineArr.map((line, lineNo) => {
+                const keyForLine=lineNo+100;
+                const content = (line.startsWith("img{") && line.endsWith("}")) ? (
+                    <div key={keyForLine}>{this.createImageContainer(line)}</div>) : (
+                    <div key={keyForLine}>{line}</div>);
                 return content;
             });
             return (<div id="post-content" className="captureEnterAndSpace">
