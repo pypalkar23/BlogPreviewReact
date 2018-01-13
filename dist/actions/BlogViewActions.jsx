@@ -1,49 +1,50 @@
 import Dispatcher from "../dispatchers/BlogDispatcher.jsx"
 import BlogActionTypes from "../constants/Blogconstants.jsx"
 
-class BlogViewActions{
+class BlogViewActions {
 
-    updateHeading(heading){
+    updateHeading(heading) {
         Dispatcher.dispatch({
             actionType: BlogActionTypes.REFRESH_HEADING,
-            payload:heading
+            payload: heading
         });
     }
 
-    resetHeading(){
+    resetHeading() {
         Dispatcher.dispatch({
-            actionType:BlogActionTypes.RESET_HEADING,
-            payload:null
+            actionType: BlogActionTypes.RESET_HEADING,
+            payload: null
         });
     }
 
 
-    updateAuthor(author){
+    updateAuthor(author) {
         Dispatcher.dispatch({
-            actionType:BlogActionTypes.REFRESH_AUTHOR,
-            payload:author
+            actionType: BlogActionTypes.REFRESH_AUTHOR,
+            payload: author
         });
     }
 
-    resetAuthor(){
+    resetAuthor() {
         Dispatcher.dispatch({
-            actionType:BlogActionTypes.RESET_AUTHOR,
-            payload:null
+            actionType: BlogActionTypes.RESET_AUTHOR,
+            payload: null
         });
     }
 
-    updateContent(content){
+    updateContent(content) {
         Dispatcher.dispatch({
-            actionType:BlogActionTypes.REFRESH_CONTENT,
-            payload:content
+            actionType: BlogActionTypes.REFRESH_CONTENT,
+            payload: content
         })
     }
-    resetContent(){
+
+    resetContent() {
         Dispatcher.dispatch({
-            actionType:BlogActionTypes.RESET_CONTENT,
-            payload:null
+            actionType: BlogActionTypes.RESET_CONTENT,
+            payload: null
         });
-        }
+    }
 }
 
 export default new BlogViewActions();
