@@ -4,7 +4,7 @@ import BlogActionTypes from '../constants/Blogconstants.jsx';
 
 const CHANGE_CONTENT_EVENT = 'CHANGE_CONTENT_EVENT';
 let _blogData = {
-    content: '',
+    content: '\u00A0',
     images:{}
 }
 
@@ -42,7 +42,9 @@ class BlogContentStore extends EventEmitter {
     }
 
     _resetContent() {
+        //console.log("Reset Content");
         _blogData.content = '\u00A0';
+        _blogData.images={};
         this.emit(CHANGE_CONTENT_EVENT);
     }
 

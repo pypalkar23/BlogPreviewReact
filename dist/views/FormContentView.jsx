@@ -28,9 +28,9 @@ export default class FormContentView extends React.Component {
         let imageText = imageFromStore.text;
 
         imageText=imageText.replace("?", associatedkey++);
-        console.log(imageText);
+        //console.log(imageText);
         newContent=newContent.concat("\n" + imageText+ "\n");
-        console.log(newContent);
+        //console.log(newContent);
         this.setState({
             textToRender: newContent,
             images: listOfImages,
@@ -54,11 +54,14 @@ export default class FormContentView extends React.Component {
     _updateContent(event) {
         let value = event.target.value;
         this.setState({textToRender: value});
-
+        //console.log(value);
         if (value === '') {
+            //console.log("if block");
             BlogViewActions.resetContent();
+
         }
         else {
+            //console.log("else block");
             BlogViewActions.updateContent(this.state);
         }
     }

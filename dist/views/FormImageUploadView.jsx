@@ -6,7 +6,7 @@ export default class FormImageUploadView extends React.Component {
         super(props);
         this.state = {
             imageText: '',
-            image: ''
+            image: '',
         }
 
         this._onChange = this._onChange.bind(this);
@@ -50,11 +50,12 @@ export default class FormImageUploadView extends React.Component {
     _appendImage() {
 
         let imagePacket = this.state;
-        console.log(imagePacket.image);
-        console.log(imagePacket.imageText);
+        //console.log(imagePacket.image);
+        //console.log(imagePacket.imageText);
 
         //console.log("Added");
         FormViewActions.appendImage(imagePacket);
+        this.fileInput.value="";
 
     }
 
@@ -64,7 +65,7 @@ export default class FormImageUploadView extends React.Component {
                 <label htmlFor="image-upload">Image to upload</label>&nbsp;
                 <div className="form-group row">
                     <span className="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <input type="file" className="form-control" onChange={(e) => this._updateImageValue(e)}/>
+                    <input type="file" className="form-control" onChange={(e) => this._updateImageValue(e)} ref={ref=> this.fileInput = ref}/>
                     </span>
                     <span className="col-lg-2 col-md-2 col-sm-12 col-xs-12"></span>
                     <button type="button" className="btn btn-primary" onClick={(e) => this._appendImage(e)}>Include

@@ -24,8 +24,10 @@ export default class BlogHeadingView extends React.Component {
     }
 
     render() {
-        return (<div id="heading" className="">
-                {this.state.heading}
+        const finalHeading=(this.state.heading==='\u00A0')?"Heading...":this.state.heading;
+        const headingCSS=(this.state.heading==='\u00A0')?"blank":"";
+        return (<div id="heading" className={headingCSS}>
+                {finalHeading}
             </div>
         );
     }

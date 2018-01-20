@@ -5,7 +5,7 @@ export default class BlogAuthorView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            author_name: '',
+            author_name: BlogAuthorStore.getAuthor()
         }
 
         this._onChange = this._onChange.bind(this);
@@ -24,8 +24,10 @@ export default class BlogAuthorView extends React.Component {
     }
 
     render() {
-        return (<div id="author" className="">
-                {this.state.author_name}
+        const classBlank=(this.state.author_name==='\u00A0')?"blank":"";
+        const content= (this.state.author_name=='\u00A0')?"Author...":this.state.author_name;
+        return (<div id="author" className={classBlank}>
+                {content}
             </div>
         );
     }
