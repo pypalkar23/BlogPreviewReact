@@ -53,7 +53,7 @@ export default class BlogContentView extends React.Component {
     render() {
         let rawText = '';
         let contentCSS = '';
-        console.log(this.state.textToRender);
+        //console.log(this.state.textToRender);
         if (this.state.textToRender === '\u00A0' || this.state.textToRender === '') {
             rawText = "Content....";
             contentCSS = "captureEnterAndSpace blank alignCenter";

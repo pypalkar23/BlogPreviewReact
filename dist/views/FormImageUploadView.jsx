@@ -39,7 +39,7 @@ export default class FormImageUploadView extends React.Component {
         let imageText = this._validateAndGetJson(imageObject);
         let reader = new FileReader();
         reader.onload = (e) => {
-            console.log("in On Load");
+            //console.log("in On Load");
             this.setState({image:reader.result, text: imageText});
         }
         reader.readAsDataURL(imageObject);
